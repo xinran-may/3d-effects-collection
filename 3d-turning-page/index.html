@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3d-turning-page</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .three-d-stage {
+            -webkit-perspective: 800px;
+            -webkit-perspective-origin: 50% 50%;
+        }
+
+        #book, #note {
+            position: relative;
+            display: inline-block;
+            width: 300px;
+            height: 330px;
+            transform-style: preserve-3d;
+        }
+
+        .page {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transition: all 2s ease-in-out;
+            -moz-transition: all 2s ease-in-out;
+            -ms-transition: all 2s ease-in-out;
+            -o-transition: all 2s ease-in-out;
+            transition: all 2s ease-in-out;
+            background-color: #d9d1b4;
+        }
+
+        .page .img-container{
+            width: 240px;
+            height: 240px;
+            margin: 30px;
+            position: relative;
+        }
+
+        .page .img-front,.img-back{
+            width: 100%;
+            height: 100%;
+        }
+
+        .page .img-back{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #d9d1b4;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+        }
+
+        #book{
+            margin: 350px 0 0 350px;
+        }
+
+        #note{
+            margin: 350px 0 0 50px;
+        }
+
+        #book .page{
+            border-left: #b3aa5a 2px dotted;
+            transform-origin: left;
+        }
+
+        #note .page{
+            border-top: #b3aa5a 2px dotted;
+            transform-origin: top;
+        }
+
+        .cotroller-container{
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .controller{
+            display: inline-block;
+            width: 140px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        /*.book .page:hover{*/
+        /*transform: rotateY(-180deg);*/
+        /*}*/
+    </style>
+    <script>
+        var bookDOM,noteDOM,bookIndex,noteIndex;
+        window.onload = function(){
+            bookDOM = document.getElementById('book');
+            noteDOM = document.getElementById('note');
+            bookIndex = 1;
+            noteIndex = 1;
+        };
+
+        function bookPrev() {
+            if(bookIndex>1){
+                var bookPage = document.getElementById('bookpage' + (bookIndex-1));
+                bookPage.style.webkitTransform = 'rotateY(0deg)';
+                bookIndex --;
+            }
+        }
+        function bookNext(){
+            if(bookIndex < 10){
+                var bookPage = document.getElementById('bookpage' + bookIndex);
+                bookPage.style.webkitTransform = 'rotateY(-180deg)';
+                bookIndex ++;
+            }
+        }
+        function notePrev(){
+            if(noteIndex>1){
+                var notepage = document.getElementById('notepage' + (noteIndex-1));
+                notepage.style.webkitTransform = 'rotateX(0deg)';
+                noteIndex --;
+            }
+        }
+        function noteNext(){
+            if(noteIndex < 10){
+                var notepage = document.getElementById('notepage' + noteIndex);
+                notepage.style.webkitTransform = 'rotateX(180deg)';
+                noteIndex ++;
+            }
+        }
+    </script>
+</head>
+<body>
+<section class="three-d-stage">
+    <section id="book">
+        <div  class="page" id="bookpage10">
+            <div class="img-container">
+                <img class="img-front" src="images/10.jpg" alt="10.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage9">
+            <div class="img-container">
+                <img class="img-front" src="images/9.jpg" alt="9.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage8">
+            <div class="img-container">
+                <img class="img-front" src="images/8.jpg" alt="8.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage7">
+            <div class="img-container">
+                <img class="img-front" src="images/7.jpg" alt="7.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage6">
+            <div class="img-container">
+                <img class="img-front" src="images/6.jpg" alt="6.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage5">
+            <div class="img-container">
+                <img class="img-front" src="images/5.jpg" alt="5.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage4">
+            <div class="img-container">
+                <img class="img-front" src="images/4.jpg" alt="4.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage3">
+            <div class="img-container">
+                <img class="img-front" src="images/3.jpg" alt="3.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage2">
+            <div class="img-container">
+                <img class="img-front" src="images/2.jpg" alt="2.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="page" id="bookpage1">
+            <div class="img-container">
+                <img class="img-front" src="images/1.jpg" alt="1.jpg">
+                <div class="img-back">This is a very nice book.</div>
+            </div>
+        </div>
+        <div class="cotroller-container">
+            <a class="controller" onclick="bookPrev()"><</a>
+            <a class="controller" onclick="bookNext()">></a>
+        </div>
+    </section>
+
+    <section id="note">
+        <div  class="page" id="notepage10">
+            <div class="img-container">
+                <img class="img-front" src="images/10.jpg" alt="10.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage9">
+            <div class="img-container">
+                <img class="img-front" src="images/9.jpg" alt="9.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage8">
+            <div class="img-container">
+                <img class="img-front" src="images/8.jpg" alt="8.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage7">
+            <div class="img-container">
+                <img class="img-front" src="images/7.jpg" alt="7.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage6">
+            <div class="img-container">
+                <img class="img-front" src="images/6.jpg" alt="6.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage5">
+            <div class="img-container">
+                <img class="img-front" src="images/5.jpg" alt="5.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage4">
+            <div class="img-container">
+                <img class="img-front" src="images/4.jpg" alt="4.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage3">
+            <div class="img-container">
+                <img class="img-front" src="images/3.jpg" alt="3.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage2">
+            <div class="img-container">
+                <img class="img-front" src="images/2.jpg" alt="2.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="page" id="notepage1">
+            <div class="img-container">
+                <img class="img-front" src="images/1.jpg" alt="1.jpg">
+                <div class="img-back"></div>
+            </div>
+        </div>
+        <div class="cotroller-container">
+            <a class="controller" onclick="notePrev()"><</a>
+            <a class="controller" onclick="noteNext()">></a>
+        </div>
+    </section>
+
+</section>
+</body>
+</html>
